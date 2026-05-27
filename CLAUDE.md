@@ -12,7 +12,7 @@
 
 ```
 policies/
-  wrangler.toml      # Pages 設定（pages_build_output_dir = "public"）
+  wrangler.toml      # Workers 設定（[assets] directory = "./public"）
   public/            # Cloudflare Workers Static Assets の配信ルート。ここ以外は公開されない
     _headers         # セキュリティヘッダ
     index.html       # トップ：アプリ一覧
