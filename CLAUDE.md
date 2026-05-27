@@ -1,11 +1,11 @@
 # policies
 
-個人開発アプリ群のプライバシーポリシーを集約する静的サイト。Cloudflare Pages にデプロイ。
+個人開発アプリ群のプライバシーポリシーを集約する静的サイト。Cloudflare Workers Static Assets にデプロイ。
 
 ## 技術スタック
 
 - 素の HTML（ビルドツールなし）
-- ホスティング: Cloudflare Pages（GitHub 連携、`main` push で自動デプロイ）
+- ホスティング: Cloudflare Workers Static Assets（GitHub 連携、`main` push で自動デプロイ）
 - スタイル: 最小限のインライン or `<style>` ブロック。CSS フレームワーク不使用
 
 ## ディレクトリ構成
@@ -13,7 +13,7 @@
 ```
 policies/
   wrangler.toml      # Pages 設定（pages_build_output_dir = "public"）
-  public/            # Cloudflare Pages の配信ルート。ここ以外は公開されない
+  public/            # Cloudflare Workers Static Assets の配信ルート。ここ以外は公開されない
     _headers         # セキュリティヘッダ
     index.html       # トップ：アプリ一覧
     <appname>/
@@ -34,8 +34,8 @@ policies/
 ## ローカル確認
 
 ```bash
-npx wrangler pages dev
-# → http://localhost:8788/
+npx wrangler dev
+# → http://localhost:8787/
 ```
 
 ## ポリシー本文に最低限含める項目
@@ -56,11 +56,11 @@ Play Console / App Store / AdMob / RevenueCat の要求を満たす最小セッ�
 
 ## デプロイ
 
-- Cloudflare Pages（プロジェクト 1 個、GitHub 連携）
-- 配信対象: `public/`（`wrangler.toml` の `pages_build_output_dir`）
+- Cloudflare Workers Static Assets（プロジェクト 1 個、GitHub 連携）
+- 配信対象: `public/`（`wrangler.toml` の `[assets] directory`）
 - ビルド: なし
-- リリース手順: `main` への push で自動デプロイ
-- Pages ダッシュボード初期設定: Framework preset `None` / Build command 空 / Root directory 空。出力ディレクトリは `wrangler.toml` 側で宣言するためダッシュボードでは設定しない（旧 Build output directory 欄は廃止）
+- リリース手順: `main` への push で自動デプロイ（Cloudflare 側で `wrangler deploy` が走る）
+- ダッシュボード設定: Framework preset `None` / Build command 空 / Root directory 空。Workers の場合 Build output directory 欄は出ない（`[assets]` で宣言する）
 
 ## 記述言語
 
