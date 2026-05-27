@@ -60,7 +60,7 @@ Play Console / App Store / AdMob / RevenueCat の要求を満たす最小セッ�
 - 配信対象: `public/`（`wrangler.toml` の `pages_build_output_dir`）
 - ビルド: なし
 - リリース手順: `main` への push で自動デプロイ
-- Pages ダッシュボード初期設定: Framework preset `None` / Build command 空 / Build output directory `public` / Root directory 空
+- Pages ダッシュボード初期設定: Framework preset `None` / Build command 空 / Root directory 空。出力ディレクトリは `wrangler.toml` 側で宣言するためダッシュボードでは設定しない（旧 Build output directory 欄は廃止）
 
 ## 記述言語
 
