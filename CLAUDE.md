@@ -5,29 +5,38 @@
 ## 技術スタック
 
 - 素の HTML（ビルドツールなし）
-- ホスティング: Cloudflare Pages
+- ホスティング: Cloudflare Pages（GitHub 連携、`main` push で自動デプロイ）
 - スタイル: 最小限のインライン or `<style>` ブロック。CSS フレームワーク不使用
 
 ## ディレクトリ構成
 
 ```
 policies/
-  index.html         # トップ：アプリ一覧
-  <appname>/
-    index.html       # 日本語版
-    en.html          # 英語版（必要なら）
-  _headers           # Cloudflare Pages のセキュリティヘッダ
+  wrangler.toml      # Pages 設定（pages_build_output_dir = "public"）
+  public/            # Cloudflare Pages の配信ルート。ここ以外は公開されない
+    _headers         # セキュリティヘッダ
+    index.html       # トップ：アプリ一覧
+    <appname>/
+      index.html     # 日本語版
+      en.html        # 英語版（必要なら）
 ```
 
 各アプリは独立ページを持つ。**1 つの HTML 内に複数アプリのポリシーを混在させない**（Play / Apple の審査でツッコまれるリスク）。
 
 ## 新規アプリ追加手順
 
-1. `policies/<appname>/` を作成
+1. `public/<appname>/` を作成
 2. `index.html`（日本語版）と必要なら `en.html` を追加
 3. 既存アプリ（tanzaku）の HTML をコピーして編集が早い
-4. `policies/index.html` のアプリ一覧にリンクを追加
+4. `public/index.html` のアプリ一覧にリンクを追加
 5. README のアプリ一覧にも 1 行追記
+
+## ローカル確認
+
+```bash
+npx wrangler pages dev
+# → http://localhost:8788/
+```
 
 ## ポリシー本文に最低限含める項目
 
@@ -47,7 +56,11 @@ Play Console / App Store / AdMob / RevenueCat の要求を満たす最小セッ�
 
 ## デプロイ
 
-Cloudflare Pages を `main` ブランチに接続。push で自動デプロイ。
+- Cloudflare Pages（プロジェクト 1 個、GitHub 連携）
+- 配信対象: `public/`（`wrangler.toml` の `pages_build_output_dir`）
+- ビルド: なし
+- リリース手順: `main` への push で自動デプロイ
+- Pages ダッシュボード初期設定: Framework preset `None` / Build command 空 / Build output directory `public` / Root directory 空
 
 ## 記述言語
 
