@@ -6,13 +6,13 @@
 
 ## 公開 URL
 
-`https://<TODO>.pages.dev/` （Cloudflare Pages 接続後に確定）
+https://policies.hira-euclid-norm-root2.workers.dev/
 
 ## 収録アプリ
 
 - `tanzaku/` — 縦書きブラウザアプリ（React Native）
-  - 日本語版: `/tanzaku/`
-  - English: `/tanzaku/en.html`
+  - 日本語版: https://policies.hira-euclid-norm-root2.workers.dev/tanzaku/
+  - English: https://policies.hira-euclid-norm-root2.workers.dev/tanzaku/en.html
 
 ## 新規アプリ追加手順
 
