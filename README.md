@@ -13,6 +13,8 @@ https://policies.hira-euclid-norm-root2.workers.dev/
 - `tanzaku/` — 縦書きブラウザアプリ（React Native）
   - 日本語版: https://policies.hira-euclid-norm-root2.workers.dev/tanzaku/
   - English: https://policies.hira-euclid-norm-root2.workers.dev/tanzaku/en.html
+- `chigusa/` — アイデアの種を 0 秒で保存するメモアプリ（React Native）
+  - 日本語版: https://policies.hira-euclid-norm-root2.workers.dev/chigusa/
 
 ## 新規アプリ追加手順
 
