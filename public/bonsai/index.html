@@ -37,7 +37,7 @@
 </head>
 <body>
   <h1>bonsai プライバシーポリシー</h1>
-  <p class="meta">最終更新日: 2026 年 6 月 1 日</p>
+  <p class="meta">最終更新日: 2026 年 6 月 3 日</p>
 
   <p>本ポリシーは、Android / iOS 向けアプリ「bonsai(盆栽)」(以下「本アプリ」)におけるユーザーデータの取り扱いについて定めるものです。本アプリを利用することにより、本ポリシーに同意したものとみなします。</p>
 
@@ -47,7 +47,9 @@
   <h2>2. 取得・保存するデータ</h2>
 
   <h3>2.1 端末内にのみ保存されるデータ</h3>
-  <p>以下のデータは、端末の OS が提供する暗号化ストレージ(iOS Keychain / Android EncryptedSharedPreferences、いずれも <code>expo-secure-store</code> 経由)にのみ保存され、本アプリの外部サーバーには送信されません。</p>
+  <p>以下のデータは、端末内のローカルストレージにのみ保存され、本アプリの外部サーバーには送信されません。</p>
+
+  <p><strong>OS の暗号化ストレージ(iOS Keychain / Android EncryptedSharedPreferences、いずれも <code>expo-secure-store</code> 経由)</strong></p>
   <ul>
     <li>Google OAuth アクセストークン</li>
     <li>Google OAuth リフレッシュトークン</li>
@@ -55,7 +57,14 @@
     <li>付与された OAuth スコープ</li>
     <li>OpenID Connect ID トークン(ログイン中アカウントの識別に使用)</li>
   </ul>
-  <p>本アプリは、上記の認証情報以外のいかなるデータも端末に永続化しません。具体的には、Markdown ファイルの本文 / 閲覧履歴 / ファイル一覧キャッシュ / アプリ設定値などを端末ローカルに保存することはありません(編集中の内容は実行中メモリ上にのみ存在し、Drive への保存または明示的な破棄をもって消えます)。</p>
+
+  <p><strong>アプリ内ストレージ(<code>AsyncStorage</code>)</strong></p>
+  <ul>
+    <li>サブスク(広告非表示プラン)加入状態のキャッシュ(コールドスタート時の広告チラつき防止のため)</li>
+    <li>リワード動画視聴による広告非表示の解除時刻(翌朝 5 時までの一時的な広告非表示状態を保持するため)</li>
+  </ul>
+
+  <p>本アプリは、上記のデータ以外を端末に永続化しません。具体的には、Markdown ファイルの本文 / 閲覧履歴 / ファイル一覧キャッシュ / アプリ設定値などを端末ローカルに保存することはありません(編集中の内容は実行中メモリ上にのみ存在し、Drive への保存または明示的な破棄をもって消えます)。</p>
 
   <h3>2.2 Google アカウント / Google Drive を通じて扱うデータ</h3>
   <p>本アプリは、ユーザーの操作に応じて Google が提供する API を直接呼び出します。以下のデータがやり取りされますが、いずれも端末と Google のサーバー間で完結し、本アプリ運営者(開発者)が運営するサーバーには送信されません。</p>
@@ -76,8 +85,33 @@
   </ul>
   <p>本アプリは Drive 内のファイル本文・メタデータを開発者側に転送・保存・解析することはありません。Drive API 呼び出しは端末 ↔ Google 間で完結します。詳細は <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google プライバシーポリシー</a> を参照してください。</p>
 
-  <h3>2.3 第三者送信</h3>
-  <p>本アプリは、広告 SDK(Google AdMob 等)・解析 SDK(Firebase Analytics 等)・課金管理 SDK(RevenueCat 等)を一切利用していません。Google 以外の第三者にデータを送信することはありません。</p>
+  <h3>2.3 第三者サービスを通じて送信されるデータ</h3>
+  <p>本アプリは、ファイル一覧 / フォルダブラウザ画面のバナー広告および「広告非表示」サブスクリプションを提供するため、以下の第三者サービスを利用します。preview / editor 画面では広告 SDK を呼び出しません(読書 / 編集体験を最優先するための「聖域」)。本アプリ運営者(開発者)は独自のバックエンドサーバーを持たず、これらの送信はすべて端末から各サービスへ直接行われます。</p>
+
+  <p><strong>Google AdMob(広告配信)</strong></p>
+  <p>ファイル一覧 / フォルダブラウザ画面でバナー広告および「動画を見て今日は消す」リワード広告を表示するために利用します。広告非表示プラン(サブスク)加入中、およびリワード広告視聴後の翌朝 5 時までの時間帯は AdMob を呼び出しません。</p>
+  <ul>
+    <li>広告 ID(Advertising ID / AAID・IDFA)</li>
+    <li>IP アドレス、デバイス情報(OS バージョン、機種等)</li>
+    <li>概略位置情報</li>
+  </ul>
+  <p>本アプリは個人化広告(personalized ads)を要求しません(<code>requestNonPersonalizedAdsOnly: true</code>)。詳細は <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google 広告ポリシー</a> および <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google プライバシーポリシー</a> を参照してください。</p>
+
+  <p><strong>RevenueCat(サブスク管理)</strong></p>
+  <p>「広告非表示プラン」サブスクリプションの購入状態を管理するために利用します。購入処理自体は Apple App Store / Google Play が行い、本アプリ・RevenueCat は購入状態の検証と取得のみを担当します。</p>
+  <ul>
+    <li>匿名のユーザー ID(RevenueCat が自動生成)</li>
+    <li>購入レシート(Apple / Google が発行した検証用情報)</li>
+    <li>デバイス情報、アプリバージョン</li>
+  </ul>
+  <p>詳細は <a href="https://www.revenuecat.com/privacy/" target="_blank" rel="noopener">RevenueCat プライバシーポリシー</a> を参照してください。</p>
+
+  <p><strong>Apple App Store / Google Play(購入処理)</strong></p>
+  <ul>
+    <li>サブスク購入時、各ストアが定めるレシート・購読状態情報がストアと本アプリの間でやり取りされます</li>
+  </ul>
+
+  <p>本アプリは上記以外の第三者サービス(解析 SDK / クラッシュレポート SDK 等)を利用していません。</p>
 
   <h2>3. Google Drive 全アクセス権限が必要な理由</h2>
   <p>本アプリは、OAuth 同意画面で以下のスコープを要求します。</p>
@@ -105,6 +139,8 @@
     <li>ユーザーの編集内容を Google Drive に保存(編集停止 2〜3 秒後に自動保存、保存時に <code>modifiedTime</code> による競合検出)</li>
     <li>ユーザー操作による新規 Markdown ファイルの作成</li>
     <li>ログイン中の Google アカウント(メール / 表示名 / アイコン)の画面表示</li>
+    <li>広告の配信および表示頻度の最適化(AdMob、ファイル一覧 / フォルダブラウザ画面のみ)</li>
+    <li>サブスクリプションの購入処理および購入状態の管理(RevenueCat、Apple、Google Play)</li>
   </ul>
 
   <h2>5. 保存期間</h2>
@@ -119,6 +155,8 @@
     <li><strong>本アプリの Drive アクセス権限を取り消す</strong>: Google アカウントの <a href="https://myaccount.google.com/connections" target="_blank" rel="noopener">「サードパーティーアプリとサービス」</a> ページから本アプリ(bonsai)を選んで「アクセス権を削除」してください。以後、Drive へのアクセスは無効になります</li>
     <li><strong>Markdown ファイルの削除</strong>: Google Drive 上で直接ファイルを削除してください。本アプリ側に複製は保存されていません</li>
     <li><strong>端末内 OAuth トークンの削除</strong>: 本アプリをアンインストールするか、本アプリ内のログアウト操作を行うと削除されます</li>
+    <li><strong>広告 ID のリセット・無効化</strong>: Android は「設定」→「Google」→「広告」、iOS は「設定」→「プライバシーとセキュリティ」→「Apple 広告」から操作できます</li>
+    <li><strong>サブスクの解約</strong>: 本アプリ内の「設定」→「管理・解約」から、または各ストアの定期購読管理画面から行えます。解約しても次回更新日までは広告非表示状態が維持されます</li>
     <li><strong>データに関するお問い合わせ</strong>: 下記連絡先までご連絡ください</li>
   </ul>
 
