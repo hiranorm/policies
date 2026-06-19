@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>itadori プライバシーポリシー</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", "Hiragino Sans",
+        "Hiragino Kaku Gothic ProN", "Noto Sans CJK JP", sans-serif;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+      line-height: 1.8;
+      color: #222;
+      background: #fafaf7;
+    }
+    @media (prefers-color-scheme: dark) {
+      body { background: #1a1a18; color: #eaeae6; }
+      a { color: #8ab4ff; }
+    }
+    h1 { font-size: 1.5rem; margin-top: 0; }
+    h2 { font-size: 1.1rem; margin-top: 2.25rem; border-bottom: 1px solid #ddd; padding-bottom: 0.25rem; }
+    @media (prefers-color-scheme: dark) {
+      h2 { border-color: #333; }
+    }
+    ul { padding-left: 1.25rem; }
+    li { margin: 0.35rem 0; }
+    .meta { color: #888; font-size: 0.9rem; }
+    footer { margin-top: 3rem; font-size: 0.85rem; color: #888; }
+    code { background: rgba(0,0,0,0.05); padding: 0.1em 0.35em; border-radius: 3px; font-size: 0.9em; }
+    @media (prefers-color-scheme: dark) {
+      code { background: rgba(255,255,255,0.1); }
+    }
+  </style>
+</head>
+<body>
+  <h1>itadori プライバシーポリシー</h1>
+  <p class="meta">最終更新日: 2026 年 6 月 19 日</p>
+
+  <p>本ポリシーは、Android / iOS 向けアプリ「itadori(板取/いたどり)」(以下「本アプリ」)におけるユーザーデータの取り扱いについて定めます。本アプリを利用することにより、本ポリシーに同意したものとみなします。</p>
+
+  <h2>1. 本アプリの概要</h2>
+  <p>本アプリは、板書(黒板・ホワイトボード・手書きメモ)を撮影し、AI による文字認識(OCR)を通じて Markdown 形式のノートへ変換し、ユーザー自身の Google Drive に保存するアプリです。本アプリの運営者(開発者)は独自のバックエンドサーバーを持たず、データの送信はすべて端末から各 Google サービスへ直接行われます。</p>
+
+  <h2>2. 端末内にのみ保存されるデータ</h2>
+  <p>以下のデータは端末内のローカルストレージにのみ保存され、開発者のサーバーには送信されません。</p>
+  <p><strong>OS の暗号化ストレージ(iOS Keychain / Android Keystore、<code>expo-secure-store</code> 経由)</strong></p>
+  <ul>
+    <li>Google OAuth アクセストークン / ID トークン / 付与されたスコープ</li>
+    <li>変換クレジットの残数、リワード広告の初回視聴状態</li>
+    <li>「学習データの送信」設定値(現在は送信機構が無く、値を保持するのみ)</li>
+  </ul>
+  <p>本アプリは、撮影画像や生成した Markdown の本文を端末に永続化しません。</p>
+
+  <h2>3. Google アカウント / Google Drive を通じて扱うデータ</h2>
+  <p>本アプリはユーザーの操作に応じて Google の API を直接呼び出します。以下はすべて端末と Google の間で完結し、開発者のサーバーには送信されません。</p>
+  <ul>
+    <li>OAuth ログインで Google から受け取るメールアドレス(ログイン中アカウントの表示・認証に使用)</li>
+    <li>撮影した原画像(JPEG): ユーザーの Drive 内 <code>itadori/originals/</code> フォルダに保存</li>
+    <li>生成した Markdown ノート: ユーザーの Drive 内 <code>itadori/</code> フォルダに保存</li>
+  </ul>
+  <p>本アプリは <code>drive.file</code> スコープのみを要求します。これは「本アプリが作成したファイル」および「ユーザーが明示的に選択したファイル」に限ってアクセスできる権限であり、ユーザーの Drive 全体を読み取ることはできません。詳細は <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google プライバシーポリシー</a> を参照してください。</p>
+
+  <h2>4. AI(Google Gemini)への画像送信</h2>
+  <p>本アプリは板書を文字へ変換するため、撮影画像を Firebase AI Logic 経由で Google の Vertex AI(Gemini 3.1 Flash-Lite モデル)に送信します。</p>
+  <ul>
+    <li>送信される画像は OCR(文字認識)処理のためにのみ使用されます。</li>
+    <li>送信された画像は Google の生成 AI モデルの学習には使用されません(Vertex AI / Google Cloud の規約)。</li>
+    <li>開発者のサーバーには画像を保持しません。</li>
+  </ul>
+
+  <h2>5. 不正利用防止(Firebase App Check)</h2>
+  <p>改変版アプリや不正アクセスを防ぐため、Firebase App Check により端末・アプリの正当性を示すトークン(Android: Play Integrity / iOS: App Attest)を Firebase に送信します。これは個人を識別する情報ではありません。</p>
+
+  <h2>6. 広告(Google AdMob)</h2>
+  <p>本アプリは API コストを賄うため、ユーザーが自発的に視聴するリワード(報酬型)動画広告を表示します。広告は本人が視聴ボタンを押したときのみ表示され、強制表示は行いません。広告配信のため AdMob(Google LLC)へ以下が送信されます。</p>
+  <ul>
+    <li>広告 ID(AAID / IDFA)</li>
+    <li>IP アドレス由来の概略位置情報、デバイス情報(OS バージョン・機種等)</li>
+  </ul>
+  <p>EEA / 英国 / スイスのユーザーには、初回起動時に同意管理プラットフォーム(UMP)を通じて同意を取得します。同意しない場合でも、個人化されない広告または制限付き広告で本アプリを利用できます。詳細は <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google 広告ポリシー</a> を参照してください。</p>
+
+  <h2>7. 学習データについて</h2>
+  <p>本アプリには「学習データの送信」設定がありますが、現在のバージョンでは送信機構を実装しておらず、同意しても何も送信されません。将来、修正済みノートと原画像を読み取り精度の改善に使う機能を追加する場合は、送信前のプレビューと個別の取り消しを提供する予定です。</p>
+
+  <h2>8. 第三者サービス</h2>
+  <p>本アプリは、上記の Google サービス(Google アカウント / Google Drive / Vertex AI[Gemini] / Firebase App Check / AdMob)以外の第三者サービスを利用していません。</p>
+
+  <h2>9. 利用目的</h2>
+  <ul>
+    <li>撮影画像の OCR と Markdown 化</li>
+    <li>生成したノート・原画像のユーザー Drive への保存</li>
+    <li>ログイン中の Google アカウント(メール)の画面表示</li>
+    <li>広告の配信および表示頻度の最適化(AdMob)</li>
+    <li>本アプリの不正利用の防止(Firebase App Check)</li>
+  </ul>
+
+  <h2>10. 保存期間</h2>
+  <ul>
+    <li>端末内の OAuth トークン: ログアウトまたはアンインストールで削除されます</li>
+    <li>Google Drive 上の画像・ノート: ユーザー自身の Drive 内に存在し続けます。開発者側に複製を保持しません</li>
+    <li>Google が保持するデータ: Google のプライバシーポリシーに従います</li>
+  </ul>
+
+  <h2>11. ユーザーの選択肢</h2>
+  <ul>
+    <li><strong>Drive アクセス権の取り消し</strong>: Google アカウントの <a href="https://myaccount.google.com/connections" target="_blank" rel="noopener">「サードパーティ アプリとサービス」</a> から「itadori」を選んでアクセス権を削除してください</li>
+    <li><strong>データの削除</strong>: Google Drive 上の <code>itadori/</code> フォルダを削除してください。開発者側に複製はありません</li>
+    <li><strong>端末内トークンの削除</strong>: 本アプリをアンインストールしてください</li>
+    <li><strong>広告 ID のリセット</strong>: Android は「設定 → Google → 広告」、iOS は「設定 → プライバシーとセキュリティ → トラッキング / Apple 広告」から操作できます</li>
+    <li><strong>広告の同意設定の変更(EEA/UK/スイス)</strong>: 本アプリ内「設定 → 広告のプライバシー設定」から変更できます</li>
+    <li><strong>お問い合わせ</strong>: 下記連絡先までご連絡ください</li>
+  </ul>
+
+  <h2>12. 子どもの利用について</h2>
+  <p>本アプリは 13 歳未満(米国では COPPA、EU では GDPR が定める年齢)の子どもを対象としていません。13 歳未満のお子様による利用が判明した場合は、関連データを速やかに削除いたします。</p>
+
+  <h2>13. 本ポリシーの変更</h2>
+  <p>本ポリシーは予告なく改定されることがあります。重要な変更がある場合は、本ページ上で告知します。</p>
+
+  <h2>14. お問い合わせ</h2>
+  <p>本ポリシーに関するご質問・データに関するお問い合わせは、下記までご連絡ください。</p>
+  <p>メール: <a href="mailto:hiranorm.support@gmail.com">hiranorm.support@gmail.com</a></p>
+
+  <footer>
+    <p><a href="./terms.html">利用規約 (Terms of Service)</a> ・ <a href="../">← ポリシー一覧に戻る</a></p>
+  </footer>
+</body>
+</html>

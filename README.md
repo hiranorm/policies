@@ -17,6 +17,9 @@ https://policies.hira-euclid-norm-root2.workers.dev/
   - 日本語版: https://policies.hira-euclid-norm-root2.workers.dev/chigusa/
 - `bonsai/` — Google Drive 内の Markdown をスマホで読む・書くアプリ（React Native）
   - 日本語版: https://policies.hira-euclid-norm-root2.workers.dev/bonsai/
+- `itadori/` — 板書を撮影して Markdown ノートに変換するアプリ（React Native）
+  - 日本語版: https://policies.hira-euclid-norm-root2.workers.dev/itadori/
+  - 利用規約: https://policies.hira-euclid-norm-root2.workers.dev/itadori/terms.html
 
 ## 新規アプリ追加手順
 
