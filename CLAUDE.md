@@ -2,6 +2,13 @@
 
 個人開発アプリ群のプライバシーポリシーを集約する静的サイト。Cloudflare Workers Static Assets にデプロイ。
 
+## ワークスペース共通(親ディレクトリ)
+
+このアプリは [`app_workspace`](https://github.com/hiranorm/app_workspace) 直下の独立リポジトリ。ワークスペース全体の規約と、複数アプリ横断の知見は親ディレクトリに集約してある:
+
+- 規約・アプリ一覧の一次情報 → [`../CLAUDE.md`](../CLAUDE.md)
+- 横断知識(開発環境・EAS/Expo ビルド・Play 配信/課金・Firebase/認証・オンデバイス AI 等)→ [`../shared_knowledge/`](../shared_knowledge/)。**新しい作業に着手する前に関連トピックへ目を通す**(詰まってからではなく、既知のハマりを先に潰すため)。
+
 ## 技術スタック
 
 - 素の HTML（ビルドツールなし）
