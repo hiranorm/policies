@@ -20,6 +20,8 @@ https://policies.hira-euclid-norm-root2.workers.dev/
 - `itadori/` — 板書を撮影して Markdown ノートに変換するアプリ（React Native）
   - 日本語版: https://policies.hira-euclid-norm-root2.workers.dev/itadori/
   - 利用規約: https://policies.hira-euclid-norm-root2.workers.dev/itadori/terms.html
+- `komadori/` — 話を聞いて Markdown ノートとして持ち帰る小鳥アプリ（React Native）
+  - 日本語版: https://policies.hira-euclid-norm-root2.workers.dev/komadori/
 
 ## 新規アプリ追加手順
 
