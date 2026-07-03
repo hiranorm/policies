@@ -22,6 +22,8 @@ https://policies.hira-euclid-norm-root2.workers.dev/
   - 利用規約: https://policies.hira-euclid-norm-root2.workers.dev/itadori/terms.html
 - `komadori/` — 話を聞いて Markdown ノートとして持ち帰る小鳥アプリ（React Native）
   - 日本語版: https://policies.hira-euclid-norm-root2.workers.dev/komadori/
+- `saji/` — AI への願望を 1 タップで差し込むキーボード内蔵アプリ（React Native + Kotlin IME）
+  - 日本語版: https://policies.hira-euclid-norm-root2.workers.dev/saji/
 
 ## 新規アプリ追加手順
 
