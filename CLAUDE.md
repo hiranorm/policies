@@ -26,7 +26,12 @@ policies/
     <appname>/
       index.html     # 日本語版
       en.html        # 英語版（必要なら）
+    apps/
+      <appname>/
+        index.html   # アプリのホームページ (LP)。英語
 ```
+
+`apps/<appname>/` はプライバシーポリシーではなく **アプリのホームページ (LP)**。OAuth verification の「homepage と privacy policy は別 URL」要件のために設ける。yurudeep.com 側 `_redirects` のプロキシ (`/apps/* → 本 Worker /apps/:splat`) 経由で `https://yurudeep.com/apps/<appname>/` として配信される（PP は `https://yurudeep.com/policies/<appname>/`）。
 
 各アプリは独立ページを持つ。**1 つの HTML 内に複数アプリのポリシーを混在させない**（Play / Apple の審査でツッコまれるリスク）。
 
