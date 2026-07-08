@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>komadori — turn lectures into readable Markdown notes</title>
+  <meta name="description" content="komadori is a mobile app that listens to lectures for you: it records audio, transcribes it on-device, and formats the result into readable Markdown notes. Optionally upload finished notes to your own Google Drive.">
+  <style>
+    :root { color-scheme: light dark; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+      line-height: 1.8;
+      color: #222;
+      background: #fafaf7;
+    }
+    @media (prefers-color-scheme: dark) {
+      body { background: #1a1a18; color: #eaeae6; }
+      a { color: #8ab4ff; }
+    }
+    h1 { font-size: 1.6rem; margin-top: 0; }
+    h2 { font-size: 1.1rem; margin-top: 2.25rem; border-bottom: 1px solid #ddd; padding-bottom: 0.25rem; }
+    @media (prefers-color-scheme: dark) {
+      h2 { border-color: #333; }
+    }
+    ul { padding-left: 1.25rem; }
+    li { margin: 0.35rem 0; }
+    .tagline { color: #666; font-size: 1.05rem; }
+    @media (prefers-color-scheme: dark) {
+      .tagline { color: #aaa; }
+    }
+    code { background: rgba(0,0,0,0.05); padding: 0.1em 0.35em; border-radius: 3px; font-size: 0.9em; }
+    @media (prefers-color-scheme: dark) {
+      code { background: rgba(255,255,255,0.1); }
+    }
+    footer { margin-top: 3rem; font-size: 0.85rem; color: #888; }
+  </style>
+</head>
+<body>
+  <h1>komadori</h1>
+  <p class="tagline">A little bird that listens to lectures for you — and brings them back as Markdown notes.</p>
+
+  <p>komadori records lectures, seminars, and talks, transcribes them <strong>on your device</strong>, and formats the transcript into readable Markdown notes in real time. It is built for people who read faster than they listen: instead of a raw recording, you take home structured knowledge you can actually re-read.</p>
+
+  <h2>What komadori does</h2>
+  <ul>
+    <li><strong>Record and transcribe on-device</strong> — speech recognition runs locally on your phone. No audio leaves your device for transcription, and it works offline.</li>
+    <li><strong>Format as you go</strong> — the transcript is shaped into Markdown in small chunks while you record, so a readable note grows in real time.</li>
+    <li><strong>Keep the audio</strong> — recordings are saved locally (<code>.m4a</code>) so you can replay any part of a session.</li>
+    <li><strong>Upload to your Google Drive (optional)</strong> — when a note is done, you can upload it to a folder you choose in your own Google Drive, so it joins the knowledge folders you already maintain.</li>
+  </ul>
+
+  <h2>How it works with your data</h2>
+  <p>komadori is a client-only app with <strong>no backend server</strong>. Recording, transcription, and Markdown formatting all happen on your device. The only network activity is the optional Google Drive upload, which goes directly between your device and Google — the developer never receives or stores your data. Sign-in uses Google OAuth, and you can revoke komadori's access at any time from your Google Account settings.</p>
+  <p>For full details, see the <a href="https://yurudeep.com/policies/komadori/">komadori Privacy Policy</a>.</p>
+
+  <h2>Availability</h2>
+  <p>komadori is an Android app distributed via Google Play (currently in testing ahead of public release). An iOS version is planned.</p>
+
+  <h2>Contact</h2>
+  <p>Questions or feedback: <a href="mailto:hiranorm.support@gmail.com">hiranorm.support@gmail.com</a></p>
+
+  <footer>
+    <p>komadori — a robin that takes notes so you can just listen. 🐦</p>
+    <p><a href="https://yurudeep.com/policies/komadori/">Privacy Policy</a></p>
+  </footer>
+</body>
+</html>
