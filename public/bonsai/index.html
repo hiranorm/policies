@@ -37,7 +37,7 @@
 </head>
 <body>
   <h1>bonsai プライバシーポリシー</h1>
-  <p class="meta">最終更新日: 2026 年 6 月 3 日</p>
+  <p class="meta">最終更新日: 2026 年 7 月 11 日</p>
 
   <p>本ポリシーは、Android / iOS 向けアプリ「bonsai(盆栽)」(以下「本アプリ」)におけるユーザーデータの取り扱いについて定めるものです。本アプリを利用することにより、本ポリシーに同意したものとみなします。</p>
 
@@ -112,6 +112,10 @@
   </ul>
 
   <p>本アプリは上記以外の第三者サービス(解析 SDK / クラッシュレポート SDK 等)を利用していません。</p>
+
+  <h3>2.4 データの保護方法</h3>
+  <p><strong>通信経路</strong>: 本アプリが Google Drive API・OAuth・広告 / 課金 SDK と通信する際は、すべて HTTPS(TLS)による暗号化通信を使用します。本アプリは独自のバックエンドサーバーを持たないため、通信は常に端末から各サービス(Google / AdMob / RevenueCat / 各ストア)へ直接行われ、経路上に開発者が管理するサーバーは存在しません。</p>
+  <p><strong>保存時</strong>: 端末内に保存する OAuth トークン等は OS の暗号化ストレージ(iOS Keychain / Android EncryptedSharedPreferences、いずれも <code>expo-secure-store</code> 経由)に保存します(詳細は 2.1 参照)。Markdown ファイルの本文は端末のメモリ上に一時的に存在するのみで、ローカルディスクへの永続化は行いません。</p>
 
   <h2>3. Google Drive 全アクセス権限が必要な理由</h2>
   <p>本アプリは、OAuth 同意画面で以下のスコープを要求します。</p>
